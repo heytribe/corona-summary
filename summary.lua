@@ -1,21 +1,25 @@
--- Lua
+---------------------------------------------------------------------------------
+-- Modules
 
 local composer  = require "composer"
-
--- Local
-
 local summaryui	= require "summary.summaryui"
 local strings 	= require "summary.strings"
 
-local animationsDuration    = 300
-
 ---------------------------------------------------------------------------------
+-- Parameters
 
-local scene = composer.newScene()
+local title
+local subtitle
+local playAgainButton
+local leaderboardButton
 local capture
 local countdownTimer
 
+local scene                 = composer.newScene()
+local animationsDuration    = 300
+
 ---------------------------------------------------------------------------------
+-- Scene
 
 function scene:create(event)
     log('summary - scene:create')
@@ -41,11 +45,6 @@ function scene:create(event)
     sceneGroup:insert(background)
 
 end
-
-local title
-local subtitle
-local playAgainButton
-local leaderboardButton
 
 function scene:show(event)
     log('summary - scene:show' .. event.phase)

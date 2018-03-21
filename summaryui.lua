@@ -1,17 +1,18 @@
-local screenW, screenH = display.actualContentWidth, display.actualContentHeight
+---------------------------------------------------------------------------------
+-- Modules
 
+local composer  = require "composer"
 local widget    = require "widget"
-local strings	= require "summary.strings"
-local composer   = require "composer"
+local strings   = require "summary.strings"
 
 ---------------------------------------------------------------------------------
+-- Parameters
 
-local fontName = 'ProximaNovaSoft-Bold'
-
-local summaryTitleSize      = 55
-local summarySubitleSize    = 19
-local summaryDefaultSize    = 15
-
+local screenW, screenH          = display.actualContentWidth, display.actualContentHeight
+local fontName                  = 'ProximaNovaSoft-Bold'
+local summaryTitleSize          = 55
+local summarySubitleSize        = 19
+local summaryDefaultSize        = 15
 local animationsDuration        = 300
 local animationsDelay           = 50
 local animationYDelta 		    = -35
@@ -24,6 +25,11 @@ local spacePlayAgainLeaderboard = 10
 local leaderboardHeight	        = 32
 local spaceBottom               = 120 + animationYDelta
 
+local exports                   = {}
+
+---------------------------------------------------------------------------------
+-- Local Functions
+
 local function fadeInAndMoveUp(target, delay, params)
 	transition.to(target, { y = animationYDelta, time = animationsDuration, delay = delay, transition = easing.outBack, delta = true, onComplete = params.onComplete })
 	transition.fadeIn(target, { time = animationsDuration, delay = delay })
@@ -34,7 +40,8 @@ local function fadeOutAndMoveDown(target, delay, params)
     transition.fadeOut(target, { time = animationsDuration, delay = delay })
 end
 
-local exports = {}
+---------------------------------------------------------------------------------
+-- Export Functions
 
 exports.showTitle = function (score, sceneGroup, params)
 
